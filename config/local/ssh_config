@@ -1,0 +1,16 @@
+Host *
+  User vagrant
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentitiesOnly yes
+  LogLevel FATAL
+
+
+Host edemocracia
+  Hostname 10.10.10.2
+  Port 22
+  IdentityFile .vagrant/machines/edemocracia/virtualbox/private_key
+
+
+# vim: ft=sshconfig

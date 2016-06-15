@@ -1,0 +1,4 @@
+edemocracia:
+  run_list:
+    - recipe[basics]
+    - recipe[edemocracia]

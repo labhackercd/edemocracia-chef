@@ -1,0 +1,13 @@
+[Unit]
+Description=Celery beat
+PartOf=colab.service
+
+[Service]
+User=<%= node['config']['system']['user'] %>
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/install -d -m 0700 -o colab /var/run/colab
+ExecStart=<%= node['config']['colab']['virtualenv'] %>/bin/colab-admin celery beat --pidfile=<%= node['config']['colab']['dir'] %>/celerybeat.pid --schedule=<%= node['config']['colab']['dir'] %>/celereybeat-schedule
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

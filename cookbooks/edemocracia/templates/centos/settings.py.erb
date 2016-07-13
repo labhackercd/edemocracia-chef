@@ -1,0 +1,51 @@
+# -*- coding: utf-8 -*-
+
+## Set to false in production
+DEBUG = False
+TEMPLATE_DEBUG = False
+
+## System admins
+ADMINS = [
+<%- node['config']['colab']['admins'].each do |admin| %>
+  ("<%= admin[0] %>", "<%= admin[1] %>"),
+<% end %>
+]
+
+MANAGERS = ADMINS
+
+# general Django settings
+DEFAULT_FROM_EMAIL = '<%= node['config']['colab']['email_from'] %>'
+
+# colab-specific
+COLAB_FROM_ADDRESS = '<%= node['config']['colab']['email_from'] %>'
+SERVER_EMAIL = '<%= node['config']['colab']['server_email'] %>'
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT =  25
+EMAIL_SUBJECT_PREFIX = "<%= node['config']['colab']['email_subject_prefix'] %>"
+
+SECRET_KEY = "<%= File.read('/etc/colab/secret.key').strip %>"
+
+ALLOWED_HOSTS = ["<%= node['config']['colab']['external_hostname'] %>", 'localhost']
+
+<% if node['environment'] == "prod" %>
+ROBOTS_NOINDEX = True
+<% else %>
+ROBOTS_NOINDEX = False
+<% end%>
+
+## Set URL of Colab home
+COLAB_HOME_URL = '/dashboard'
+
+STATIC_ROOT = '<%= node['config']['colab']['dir'] %>/colab/assets/'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
+        'URL': 'http://localhost:8983/solr/',
+    }
+}
+
+LANGUAGE_CODE = 'pt-br'
+
+RIBBON_ENABLED = False

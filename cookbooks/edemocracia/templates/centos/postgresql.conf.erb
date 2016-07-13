@@ -1,0 +1,20 @@
+listen_addresses = 'localhost,127.0.0.1,<%= node['peers']['edemocracia'] %>'
+
+#######################################################################
+# other settings
+#######################################################################
+max_connections = 500                             # (change requires restart)
+logging_collector = on                            # Enable capturing of stderr and csvlog
+log_filename = 'postgresql-%a.log'                # log file name pattern,
+log_truncate_on_rotation = on                     # If on, an existing log file with the
+log_rotation_age = 1d                             # Automatic rotation of logfiles will
+log_rotation_size = 0                             # Automatic rotation of logfiles will
+log_timezone = 'UTC'
+log_destination = 'syslog'                        # Send logs to syslog server
+datestyle = 'iso, mdy'
+timezone = 'UTC'
+lc_messages = 'en_US.UTF-8'                       # locale for system error message
+lc_monetary = 'en_US.UTF-8'                       # locale for monetary formatting
+lc_numeric = 'en_US.UTF-8'                        # locale for number formatting
+lc_time = 'en_US.UTF-8'                           # locale for time formatting
+default_text_search_config = 'pg_catalog.english'

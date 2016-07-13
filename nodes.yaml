@@ -2,3 +2,5 @@ edemocracia:
   run_list:
     - recipe[basics]
     - recipe[edemocracia]
+    - recipe[edemocracia::database]
+    - recipe[edemocracia::colab]

@@ -1,0 +1,15 @@
+[Unit]
+Description=Colab
+Before=celeryd.service celerybeat.service
+Requires=celeryd.service celerybeat.service
+
+[Service]
+User=<%= node['config']['system']['user'] %>
+EnvironmentFile=-/etc/sysconfig/colab
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g colab /var/lock/colab
+ExecStart=<%= node['config']['colab']['virtualenv'] %>/bin/gunicorn colab.wsgi:application --config=/etc/colab/gunicorn.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -48,7 +48,7 @@ end
 
 desc "Install bootstrap dependencies"
 task :install_deps => ssh_config_file do
-  sh 'ssh', '-F', ssh_config_file, 'edemocracia', 'sudo', 'yum install wget'
+  sh 'ssh', '-F', ssh_config_file, 'edemocracia', 'sudo', 'yum install -y wget'
 end
 
 task 'bootstrap_common' => ssh_config_file

@@ -11,7 +11,7 @@ template "/var/lib/pgsql/data/postgresql.conf" do
   user "postgres"
   group "postgres"
   mode 0600
-  notifies :restart, "service[postgresql]"
+  notifies :restart, 'service[postgresql]', :immediately
 end
 
 service "postgresql" do
@@ -20,11 +20,11 @@ service "postgresql" do
 end
 
 # Create database users for all applications
-applications_usernames = ['colab', 'wikilegis', 'discourse']
+applications_usernames = ['colab', 'wikilegis', 'discourse', node['config']['system']['user']]
 
 applications_usernames.each do |username|
   execute "createuser:#{username}" do
-    command "createuser #{username}"
+    command "createuser -s #{username}"
     user 'postgres'
     only_if do
       `sudo -u postgres -i psql --quiet --tuples-only -c "select count(*) from pg_user where usename = '#{username}';"`.strip.to_i == 0

@@ -1,0 +1,17 @@
+[Unit]
+Description=Discourse
+Before=redis.service
+Requires=redis.service
+
+[Service]
+User=<%= node['config']['system']['user'] %>
+EnvironmentFile=-/etc/sysconfig/discourse
+Environment=RAILS_ENV=production
+PermissionsStartOnly=true
+WorkingDirectory=<%= node['config']['discourse']['dir'] %>
+ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g discourse /var/lock/discourse
+ExecStart=/usr/local/bin/bundle exec unicorn
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

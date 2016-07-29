@@ -15,3 +15,5 @@ wikilegis:
   dir: '/opt/wikilegis'
 discourse:
   dir: '/opt/discourse'
+  branch: 'master'
+  repository: 'https://github.com/labhackercd/lab-discourse.git'

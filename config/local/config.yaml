@@ -9,11 +9,19 @@ colab:
   server_email: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   email_subject_prefix: '[e-Democracia]'
   external_hostname: 'edemocracia.dev'
+  plugins_dir: '/opt/colab-plugins'
   admins:
     - ["Admin", "admin@email.com"]
 wikilegis:
   dir: '/opt/wikilegis'
+  branch: 'colab_integration'
+  repository: 'https://github.com/labhackercd/wikilegis.git'
+  virtualenv: '/opt/virtualenvs/wikilegis'
+  email_host: 'smtp.email.com'
+  email_port: '587'
+  email_address: 'email@email.com'
+  email_password: 'email_pass'
+  url_prefix: '/wikilegis'
 discourse:
-  dir: '/opt/discourse'
-  branch: 'master'
+  dir: '/opt/discourse'  branch: 'master'
   repository: 'https://github.com/labhackercd/lab-discourse.git'

@@ -1,4 +1,4 @@
-dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel',
+dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc',
                 'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis',]
 
 dependencies.each do |package_name|

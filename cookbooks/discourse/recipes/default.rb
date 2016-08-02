@@ -41,14 +41,21 @@ directory "#{node['config']['discourse']['dir']}/tmp" do
   action :create
 end
 
+directory node['config']['discourse']['rbenv'] do
+  owner "#{node['config']['system']['user']}"
+  group "discourse"
+  mode '0755'
+  action :create
+end
+
 template "#{node['config']['discourse']['dir']}/config/database.yml" do
   user node['config']['system']['user']
   group 'discourse'
   mode '0644'
 end
 
-execute 'bundle install' do
-  cwd node['config']['discourse']['dir']
+execute 'install:deps' do
+  command "/usr/local/bin/bundle install --quiet --gemfile=#{node['config']['discourse']['dir']}/Gemfile --path=#{node['config']['discourse']['rbenv']}"
   user node['config']['system']['user']
   group 'discourse'
   action :run
@@ -59,7 +66,7 @@ service 'redis' do
   action [:start, :enable]
 end
 
-execute 'bundle exec rake db:migrate' do
+execute '/usr/local/bin/bundle exec rake db:migrate' do
   user node['config']['system']['user']
   group 'discourse'
   environment ({"RAILS_ENV" => "production"})
@@ -67,7 +74,7 @@ execute 'bundle exec rake db:migrate' do
   action :run
 end
 
-execute 'bundle exec rake assets:precompile' do
+execute '/usr/local/bin/bundle exec rake assets:precompile' do
   user node['config']['system']['user']
   group 'discourse'
   environment ({"RAILS_ENV" => "production"})
@@ -80,6 +87,14 @@ template '/etc/systemd/system/discourse.service' do
   group 'root'
   mode '0644'
 end
+
+template '/etc/systemd/system/discourse-sidekiq.service' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+execute 'systemctl daemon-reload'
 
 service 'discourse' do
   supports :status => true, :restart => true, :reload => true

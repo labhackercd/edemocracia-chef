@@ -1,0 +1,14 @@
+[Unit]
+Description=Discourse Sidekiq
+After=syslog.target
+After=network.target
+
+[Service]
+User=<%= node['config']['system']['user'] %>
+Group=discourse
+WorkingDirectory=<%= node['config']['discourse']['dir'] %>
+ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g discourse /var/lock/discourse-sidekiq
+ExecStart=/usr/local/bin/bundle exec sidekiq -e production
+
+[Install]
+WantedBy=multi-user.target

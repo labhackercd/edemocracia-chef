@@ -4,3 +4,5 @@ edemocracia:
     - recipe[edemocracia]
     - recipe[edemocracia::database]
     - recipe[edemocracia::colab]
+    - recipe[wikilegis]
+    - recipe[discourse]

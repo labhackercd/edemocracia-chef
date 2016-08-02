@@ -23,5 +23,7 @@ wikilegis:
   email_password: 'email_pass'
   url_prefix: '/wikilegis'
 discourse:
-  dir: '/opt/discourse'  branch: 'master'
+  dir: '/opt/discourse'
+  rbenv: '/opt/rbenv/'
+  branch: 'master'
   repository: 'https://github.com/labhackercd/lab-discourse.git'

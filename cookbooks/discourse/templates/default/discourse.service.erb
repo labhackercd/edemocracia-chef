@@ -2,6 +2,7 @@
 Description=Discourse
 Before=redis.service
 Requires=redis.service
+After=discourse-sidekiq.service
 
 [Service]
 User=<%= node['config']['system']['user'] %>

@@ -1,0 +1,7 @@
+[isv_spb_spb]
+name=Software Publico Brasileiro (CentOS_7)
+type=rpm-md
+baseurl=https://copr-be.cloud.fedoraproject.org/results/softwarepublico/v5/epel-7-$basearch/
+gpgcheck=1
+gpgkey=https://copr-be.cloud.fedoraproject.org/results/softwarepublico/v5/pubkey.gpg
+enabled=1

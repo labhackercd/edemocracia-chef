@@ -1,8 +1,21 @@
 dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc',
-                'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis',]
+                'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'solr']
+
+cookbook_file '/etc/yum.repos.d/softwarepublico.repo' do
+  owner 'root'
+  mode '0644'
+end
+
+cookbook_file '/etc/yum.repos.d/softwarepublico.key' do
+  owner 'root'
+  mode '0644'
+end
 
 dependencies.each do |package_name|
-  package "#{package_name}"
+  package "#{package_name}" do
+    retries 3
+    retry_delay 2
+  end
 end
 
 user 'colab' do
@@ -26,6 +39,8 @@ end
 git "#{node['config']['colab']['dir']}" do
   repository node['config']['colab']['repository']
   revision node['config']['colab']['branch']
+  user "#{node['config']['system']['user']}"
+  group 'colab'
   action :sync
 end
 
@@ -105,13 +120,22 @@ cookbook_file '/etc/colab/settings.d/02-logging.py' do
   mode '0755'
 end
 
+cookbook_file '/etc/colab/settings.d/03-staticfiles.py' do
+  action :create
+  owner "#{node['config']['system']['user']}"
+  group "colab"
+  mode '0755'
+end
+
 execute 'migrate' do
   command "#{node['config']['colab']['virtualenv']}/bin/colab-admin migrate"
+  user "#{node['config']['system']['user']}"
   action :run
 end
 
 execute 'collectstatic' do
   command "#{node['config']['colab']['virtualenv']}/bin/colab-admin collectstatic --noinput"
+  user "#{node['config']['system']['user']}"
   action :run
 end
 

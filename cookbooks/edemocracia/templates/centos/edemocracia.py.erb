@@ -1,0 +1,32 @@
+from django.utils.translation import ugettext_lazy as _
+from colab.plugins.utils.menu import colab_url_factory
+
+name = 'colab_edemocracia'
+verbose_name = 'Colab eDemocracia Plugin'
+
+urls = {
+    'include': 'colab_edemocracia.urls',
+    'prefix': '',
+    'namespace': 'colab_edemocracia',
+}
+
+dependencies = ['djangobower', 'compressor',]
+
+settings_variables = {
+    'STATICFILES_FINDERS': (
+        'djangobower.finders.BowerFinder',
+        'compressor.finders.CompressorFinder',
+    ),
+    'BOWER_COMPONENTS_ROOT': '<%= "#{node['config']['colab']['plugins_dir']}/#{@plugin_name}" %>/src/colab_edemocracia/static',
+    'BOWER_INSTALLED_APPS': (
+        'foundation-sites',
+        'https://github.com/labhackercd/fontastic-labhacker.git',
+    ),
+    'COMPRESS_PRECOMPILERS': (
+        ('text/x-scss', 'django_libsass.SassCompiler'),
+    ),
+    'LIBSASS_SOURCEMAPS': 'DEBUG',
+    'COMPRESS_ROOT': "<%= "#{node['config']['colab']['dir']}/colab/assets" %>",
+    'COLAB_TEMPLATES': ("<%= "#{node['config']['colab']['plugins_dir']}/#{@plugin_name}" %>/src/colab_edemocracia/templates",),
+    'COLAB_STATICS': ['<%= "#{node['config']['colab']['plugins_dir']}/#{@plugin_name}" %>/src/colab_edemocracia/static']
+}

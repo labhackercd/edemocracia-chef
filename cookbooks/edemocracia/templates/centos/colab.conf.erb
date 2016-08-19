@@ -21,6 +21,24 @@ server {
     proxy_set_header        Host $host;
     proxy_set_header        X-Real-IP $remote_addr;
     proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+
+    location /wikilegis/static/ {
+      alias <%= node['config']['wikilegis']['dir'] %>/public/static/;
+    }
+
+    location /discourse/assets/ {
+      alias <%= node['config']['discourse']['dir'] %>/public/assets/;
+      gzip_static on;
+    }
+
+    location /assets/ {
+      alias <%= node['config']['discourse']['dir'] %>/public/assets/;
+      gzip_static on;
+    }
+
+    location /stylesheets/ {
+      alias <%= node['config']['discourse']['dir'] %>/tmp/stylesheet-cache/;
+    }
   }
 }
 

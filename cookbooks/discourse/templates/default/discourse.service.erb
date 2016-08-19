@@ -8,6 +8,7 @@ After=discourse-sidekiq.service
 User=<%= node['config']['system']['user'] %>
 EnvironmentFile=-/etc/sysconfig/discourse
 Environment=RAILS_ENV=production
+Environment=RAILS_RELATIVE_URL_ROOT=/discourse
 PermissionsStartOnly=true
 WorkingDirectory=<%= node['config']['discourse']['dir'] %>
 ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g discourse /var/lock/discourse

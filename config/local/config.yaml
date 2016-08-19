@@ -9,6 +9,7 @@ colab:
   server_email: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   email_subject_prefix: '[e-Democracia]'
   external_hostname: 'edemocracia.dev'
+  site_url: 'http://edemocracia.dev'
   plugins_dir: '/opt/colab-plugins'
   admins:
     - ["Admin", "admin@email.com"]
@@ -26,4 +27,21 @@ discourse:
   dir: '/opt/discourse'
   rbenv: '/opt/rbenv/'
   branch: 'master'
+  notification_email: 'email@email.com'
+  logo_url: '/images/logo.png'
+  small_logo_url: '/images/small-logo.png'
+  fav_icon_url: '/images/fav_icon.png'
   repository: 'https://github.com/labhackercd/lab-discourse.git'
+plugins:
+  -
+    name: 'wikilegis'
+    url: 'https://github.com/labhackercd/colab-wikilegis-plugin.git'
+    branch: 'master'
+  -
+    name: 'discourse'
+    url: 'https://github.com/labhackercd/colab-discourse-plugin.git'
+    branch: 'master'
+  -
+    name: 'edemocracia'
+    url: 'https://github.com/labhackercd/colab-edemocracia-plugin.git'
+    branch: 'master'

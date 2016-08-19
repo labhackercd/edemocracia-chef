@@ -7,8 +7,8 @@ After=network.target
 User=<%= node['config']['system']['user'] %>
 Group=discourse
 WorkingDirectory=<%= node['config']['discourse']['dir'] %>
-ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g discourse /var/lock/discourse-sidekiq
 ExecStart=/usr/local/bin/bundle exec sidekiq -e production
+PIDFile=<%= node['config']['discourse']['dir'] %>/log/sk.pid
 
 [Install]
 WantedBy=multi-user.target

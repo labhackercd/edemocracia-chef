@@ -94,13 +94,13 @@ execute '/usr/local/bin/bundle exec rake db:migrate' do
   action :run
 end
 
-# execute '/usr/local/bin/bundle exec rake assets:precompile' do
-#   user node['config']['system']['user']
-#   group 'discourse'
-#   environment ({"RAILS_ENV" => "production"})
-#   cwd node['config']['discourse']['dir']
-#   action :run
-# end
+execute '/usr/local/bin/bundle exec rake assets:precompile' do
+  user node['config']['system']['user']
+  group 'discourse'
+  environment ({"RAILS_ENV" => "production"})
+  cwd node['config']['discourse']['dir']
+  action :run
+end
 
 template '/etc/systemd/system/discourse.service' do
   owner 'root'

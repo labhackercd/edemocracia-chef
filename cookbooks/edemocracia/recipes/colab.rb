@@ -173,6 +173,11 @@ service 'colab' do
   action [:start, :enable]
 end
 
+service 'solr' do
+  supports :status => true, :restart => true
+  action [:start, :enable]
+end
+
 template '/etc/nginx/conf.d/colab.conf' do
   owner 'root'
   group 'root'

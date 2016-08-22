@@ -1,0 +1,8 @@
+Host *
+  ForwardAgent yes
+
+
+Host edemocracia
+  Hostname 192.168.0.101
+  User edemocracia
+  Port 22

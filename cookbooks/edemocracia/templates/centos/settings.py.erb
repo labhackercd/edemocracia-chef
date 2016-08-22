@@ -26,7 +26,11 @@ EMAIL_SUBJECT_PREFIX = "<%= node['config']['colab']['email_subject_prefix'] %>"
 
 SECRET_KEY = "<%= File.read('/etc/colab/secret.key').strip %>"
 
-ALLOWED_HOSTS = ["<%= node['config']['colab']['external_hostname'] %>", 'localhost']
+ALLOWED_HOSTS = [
+<%- node['config']['colab']['allowed_hosts'].each do |hostname| %>
+    "<%= hostname %>",
+<% end -%>
+]
 
 <% if node['environment'] == "prod" %>
 ROBOTS_NOINDEX = True

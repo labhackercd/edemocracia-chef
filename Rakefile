@@ -51,6 +51,12 @@ task :install_deps => ssh_config_file do
   sh 'ssh', '-F', ssh_config_file, 'edemocracia', 'sudo', 'yum install -y wget rsync'
 end
 
+desc "Collect static files"
+task :collectstatic => ssh_config_file do
+  sh 'ssh', '-F', ssh_config_file, 'edemocracia', "#{config['colab']['virtualenv']}/bin/colab-admin bower install"
+  sh 'ssh', '-F', ssh_config_file, 'edemocracia', "#{config['colab']['virtualenv']}/bin/colab-admin collectstatic --noinput"
+end
+
 task 'bootstrap_common' => ssh_config_file
 task 'run_input' => ssh_config_file
 

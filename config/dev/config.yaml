@@ -1,5 +1,5 @@
 system:
-  user: 'vagrant'
+  user: 'edemocracia'
 colab:
   dir: '/opt/colab'
   branch: 'master'
@@ -8,8 +8,9 @@ colab:
   email_from: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   server_email: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   email_subject_prefix: '[e-Democracia]'
-  allowerd_hosts:
+  allowed_hosts:
     - 'edemocracia.dev'
+    - '192.168.0.101'
   site_url: 'http://edemocracia.dev'
   plugins_dir: '/opt/colab-plugins'
   admins:

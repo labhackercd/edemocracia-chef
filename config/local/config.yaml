@@ -29,9 +29,9 @@ discourse:
   rbenv: '/opt/rbenv/'
   branch: 'master'
   notification_email: 'email@email.com'
-  logo_url: '/images/logo.png'
-  small_logo_url: '/images/small-logo.png'
-  fav_icon_url: '/images/fav_icon.png'
+  logo_url: '/discourse/assets/logo.png'
+  small_logo_url: '/discourse/assets/small-logo.png'
+  fav_icon_url: '/discourse/assets/fav_icon.png'
   repository: 'https://github.com/labhackercd/lab-discourse.git'
 plugins:
   -

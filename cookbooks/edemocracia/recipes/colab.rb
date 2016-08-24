@@ -1,4 +1,4 @@
-dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc',
+dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc', 'memcached',
                 'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'solr']
 
 cookbook_file '/etc/yum.repos.d/softwarepublico.repo' do
@@ -54,7 +54,7 @@ execute "colab:deps" do
 end
 
 execute "colab:extra_deps" do
-  command "#{node['config']['colab']['virtualenv']}/bin/pip install psycopg2 gunicorn pysolr"
+  command "#{node['config']['colab']['virtualenv']}/bin/pip install psycopg2 gunicorn pysolr python-memcached"
 end
 
 directory '/var/log/colab' do
@@ -121,6 +121,13 @@ cookbook_file '/etc/colab/settings.d/02-logging.py' do
 end
 
 cookbook_file '/etc/colab/settings.d/03-staticfiles.py' do
+  action :create
+  owner "#{node['config']['system']['user']}"
+  group "colab"
+  mode '0755'
+end
+
+cookbook_file '/etc/colab/settings.d/04-memcached.py' do
   action :create
   owner "#{node['config']['system']['user']}"
   group "colab"

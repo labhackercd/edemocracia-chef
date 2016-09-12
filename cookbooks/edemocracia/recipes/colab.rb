@@ -1,13 +1,9 @@
 dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc', 'memcached',
-                'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'solr']
+                'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'elasticsearch']
 
-cookbook_file '/etc/yum.repos.d/softwarepublico.repo' do
+cookbook_file '/etc/yum.repos.d/elasticsearch.repo' do
   owner 'root'
-  mode '0644'
-end
-
-cookbook_file '/etc/yum.repos.d/softwarepublico.key' do
-  owner 'root'
+  group 'root'
   mode '0644'
 end
 
@@ -54,7 +50,7 @@ execute "colab:deps" do
 end
 
 execute "colab:extra_deps" do
-  command "#{node['config']['colab']['virtualenv']}/bin/pip install psycopg2 gunicorn pysolr python-memcached"
+  command "#{node['config']['colab']['virtualenv']}/bin/pip install psycopg2 gunicorn elasticsearch python-memcached"
 end
 
 directory '/var/log/colab' do
@@ -180,7 +176,7 @@ service 'colab' do
   action [:start, :enable]
 end
 
-service 'solr' do
+service 'elasticsearch' do
   supports :status => true, :restart => true
   action [:start, :enable]
 end

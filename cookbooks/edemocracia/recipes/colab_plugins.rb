@@ -66,18 +66,11 @@ execute 'collectstatic' do
   user "#{node['config']['system']['user']}"
 end
 
-execute 'build:solr:schema' do
-  cwd "/usr/share/solr/example/solr/collection1/conf"
-  retries 2
-  retry_delay 2
-  command "#{node['config']['colab']['virtualenv']}/bin/colab-admin build_solr_schema > schema.xml"
-end
-
 service 'colab' do
   supports :status => true, :restart => true, :reload => true
   action [:restart, :enable]
 end
 
-service 'solr' do
+service 'elasticsearch' do
   action :restart
 end

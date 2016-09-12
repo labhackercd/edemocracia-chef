@@ -41,14 +41,24 @@ ROBOTS_NOINDEX = False
 ## Set URL of Colab home
 COLAB_HOME_URL = '/home'
 
+LOGIN_URL = COLAB_HOME_URL
+
 STATIC_ROOT = '<%= node['config']['colab']['dir'] %>/colab/assets/'
 
 HAYSTACK_CONNECTIONS = {
     'default': {
-        'ENGINE': 'haystack.backends.solr_backend.SolrEngine',
-        'URL': 'http://localhost:8983/solr/',
-    }
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
 }
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<%= node['config']['colab']['google_oauth_key'] %>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<%= node['config']['colab']['google_oauth_secret'] %>'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '<%= node['config']['colab']['facebook_oauth_key'] %>'
+SOCIAL_AUTH_FACEBOOK_SECRET = '<%= node['config']['colab']['facebook_oauth_secret'] %>'
+
 
 LANGUAGE_CODE = 'pt-br'
 

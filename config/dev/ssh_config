@@ -3,6 +3,6 @@ Host *
 
 
 Host edemocracia
-  Hostname 192.168.0.101
+  Hostname 192.168.66.10
   User edemocracia
   Port 22

@@ -1,0 +1,6 @@
+node.name: "eDemocracia Node"
+cluster.name: edemocracia
+index.number_of_shards: 2
+index.number_of_replicas: 1
+network.bind_host: localhost
+script.disable_dynamic: true

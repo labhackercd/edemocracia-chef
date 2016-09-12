@@ -10,11 +10,15 @@ colab:
   email_subject_prefix: '[e-Democracia]'
   allowed_hosts:
     - 'edemocracia.dev'
-    - '192.168.0.101'
+    - '192.168.66.10'
   site_url: 'http://edemocracia.dev'
   plugins_dir: '/opt/colab-plugins'
   admins:
     - ["Admin", "admin@email.com"]
+  google_oauth_key: ''
+  google_oauth_secret: ''
+  facebook_oauth_key: ''
+  facebook_oauth_secret: ''
 wikilegis:
   dir: '/opt/wikilegis'
   branch: 'colab_integration'

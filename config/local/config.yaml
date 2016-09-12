@@ -14,6 +14,10 @@ colab:
   plugins_dir: '/opt/colab-plugins'
   admins:
     - ["Admin", "admin@email.com"]
+  google_oauth_key: ''
+  google_oauth_secret: ''
+  facebook_oauth_key: ''
+  facebook_oauth_secret: ''
 wikilegis:
   dir: '/opt/wikilegis'
   branch: 'colab_integration'

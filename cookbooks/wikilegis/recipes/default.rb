@@ -70,6 +70,11 @@ execute 'migrate' do
   action :run
 end
 
+execute 'compilemessages' do
+  command "#{node['config']['wikilegis']['virtualenv']}/bin/python #{node['config']['wikilegis']['dir']}/manage.py compilemessages"
+  action :run
+end
+
 execute 'collectstatic' do
   command "#{node['config']['wikilegis']['virtualenv']}/bin/python #{node['config']['wikilegis']['dir']}/manage.py collectstatic --noinput"
   user node['config']['system']['user']

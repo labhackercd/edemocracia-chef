@@ -20,8 +20,11 @@ DEFAULT_FROM_EMAIL = '<%= node['config']['colab']['email_from'] %>'
 COLAB_FROM_ADDRESS = '<%= node['config']['colab']['email_from'] %>'
 SERVER_EMAIL = '<%= node['config']['colab']['server_email'] %>'
 
-EMAIL_HOST = "localhost"
-EMAIL_PORT =  25
+EMAIL_HOST = "<%= node['config']['colab']['email_host'] %>"
+EMAIL_PORT =  <%= node['config']['colab']['email_port'] %>
+EMAIL_HOST_USER = "<%= node['config']['colab']['email_address'] %>"
+EMAIL_HOST_PASSWORD = "<%= node['config']['colab']['email_password'] %>"
+EMAIL_USE_TLS = <%= node['config']['colab']['email_use_tls'] %>
 EMAIL_SUBJECT_PREFIX = "<%= node['config']['colab']['email_subject_prefix'] %>"
 
 SECRET_KEY = "<%= File.read('/etc/colab/secret.key').strip %>"

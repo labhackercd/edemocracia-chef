@@ -29,6 +29,7 @@ directory "#{node['config']['colab']['dir']}" do
   group "colab"
   mode '0755'
   action :create
+  recursive true
 end
 
 

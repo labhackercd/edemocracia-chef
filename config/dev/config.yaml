@@ -8,6 +8,11 @@ colab:
   email_from: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   server_email: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   email_subject_prefix: '[e-Democracia]'
+  email_host: ''
+  email_port: ''
+  email_use_tls: False
+  email_address: ''
+  email_password: ''
   allowed_hosts:
     - 'edemocracia.dev'
     - '192.168.66.10'
@@ -24,10 +29,11 @@ wikilegis:
   branch: 'colab_integration'
   repository: 'https://github.com/labhackercd/wikilegis.git'
   virtualenv: '/opt/virtualenvs/wikilegis'
-  email_host: 'smtp.email.com'
-  email_port: '587'
-  email_address: 'email@email.com'
-  email_password: 'email_pass'
+  email_host: ''
+  email_port: ''
+  email_use_tls: False
+  email_address: ''
+  email_password: ''
   url_prefix: '/wikilegis'
 discourse:
   dir: '/opt/discourse'

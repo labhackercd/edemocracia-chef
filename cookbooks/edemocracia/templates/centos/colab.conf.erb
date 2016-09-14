@@ -42,4 +42,14 @@ server {
   }
 }
 
+server {
+    server_name edemocracia.labhackercd.net;
+    return 301 $scheme://beta.edemocracia.camara.leg.br$request_uri;
+}
+
+server {
+    server_name beta.edemocracia.camara.gov.br;
+    return 301 $scheme://beta.edemocracia.camara.leg.br$request_uri;
+}
+
 # vim: ft=nginx

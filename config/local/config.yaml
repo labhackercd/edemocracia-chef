@@ -31,6 +31,7 @@ wikilegis:
   email_host: ''
   email_port: ''
   email_use_tls: False
+  email_from: '"Portal e-Democracia[Wikilegis]" <email@email.com>'
   email_address: ''
   email_password: ''
   url_prefix: '/wikilegis'

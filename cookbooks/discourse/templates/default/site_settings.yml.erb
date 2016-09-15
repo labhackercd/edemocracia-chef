@@ -19,7 +19,7 @@
 required:
   title:
     client: true
-    default: 'Discourse'
+    default: 'Expressão'
   site_description:
     default: 'Dê sua opinião sobre os assuntos que afetam a sua vida, discutindo soluções com outros cidadãos e os deputados.'
   contact_email:
@@ -34,7 +34,7 @@ required:
     type: email
     shadowed_by_global: true
   site_contact_username:
-    default: 'E-Democracia'
+    default: 'e-Democracia'
     type: username
   logo_url:
     client: true
@@ -409,7 +409,7 @@ posting:
     default: 2
   allow_uncategorized_topics:
     client: false
-    default: false
+    default: true
     refresh: false
   allow_duplicate_topic_titles: false
   min_title_similar_length:
@@ -524,7 +524,7 @@ email:
     default: false
     client: true
   email_custom_headers: 'Auto-Submitted: auto-generated'
-  email_subject: '[%{site_name}] %{optional_pm}%{optional_cat}%{topic_title}'
+  email_subject: 'Portal e-Democracia[%{site_name}] %{optional_pm}%{optional_cat}%{topic_title}'
   reply_by_email_enabled:
     default: false
     validator: "ReplyByEmailEnabledValidator"
@@ -810,7 +810,7 @@ developer:
     hidden:
       development: false
       default: true
-    default: ''
+    default: '<%= node['config']['discourse']['hostname'] %>'
   port:
     hidden:
       development: false

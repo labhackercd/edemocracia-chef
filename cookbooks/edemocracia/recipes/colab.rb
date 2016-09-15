@@ -1,5 +1,6 @@
 dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc', 'memcached',
-                'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'elasticsearch']
+                'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'elasticsearch',
+                'java-1.8.0-openjdk']
 
 cookbook_file '/etc/yum.repos.d/elasticsearch.repo' do
   owner 'root'

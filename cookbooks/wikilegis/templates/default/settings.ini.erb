@@ -5,7 +5,7 @@ EMAIL_HOST_USER = <%= node['config']['wikilegis']['email_address'] %>
 EMAIL_HOST_PASSWORD = <%= node['config']['wikilegis']['email_password'] %>
 EMAIL_PORT = <%= node['config']['wikilegis']['email_port'] %>
 EMAIL_USE_TLS = <%= node['config']['wikilegis']['email_use_tls'] %>
-DEFAULT_FROM_EMAIL = <%= node['config']['wikilegis']['email_address'] %>
+DEFAULT_FROM_EMAIL = <%= node['config']['wikilegis']['email_from'] %>
 DJANGO_SECRET_KEY = <%= File.read("#{node['config']['wikilegis']['dir']}/secret.key").strip %>
 API_KEY = <%= File.read("#{node['config']['wikilegis']['dir']}/api.key").strip %>
 DEBUG = False

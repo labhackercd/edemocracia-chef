@@ -4,13 +4,13 @@ from colab.plugins.utils.menu import colab_url_factory
 name = 'colab_discourse'
 verbose_name = 'Colab Discourse Plugin Plugin'
 
-upstream = 'http://127.0.0.1:8080/discourse/'
+upstream = 'http://127.0.0.1:8080/expressao/'
 api_key = '<%= @get_discourse_api_token.call %>'
 api_username = 'system'
 sso_secret = '<%= File.read("#{node['config']['discourse']['dir']}/sso_secret.key").strip %>'
 
 urls = {
     'include': 'colab_discourse.urls',
-    'prefix': '^discourse/',
-    'login': '/discourse/accounts/login/',
+    'prefix': '^expressao/',
+    'login': '/expressao/accounts/login/',
 }

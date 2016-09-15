@@ -26,7 +26,7 @@ server {
       alias <%= node['config']['wikilegis']['dir'] %>/public/static/;
     }
 
-    location /discourse/assets/ {
+    location /expressao/assets/ {
       alias <%= node['config']['discourse']['dir'] %>/public/assets/;
       gzip_static on;
     }

@@ -42,6 +42,14 @@ git "#{node['config']['colab']['dir']}" do
   action :sync
 end
 
+directory "#{node['config']['colab']['dir']}/colab/media" do
+  owner "#{node['config']['system']['user']}"
+  group "colab"
+  mode '0755'
+  action :create
+  recursive true
+end
+
 execute "virtualenv #{node['config']['colab']['virtualenv']}" do
   not_if do FileTest.directory?(node['config']['colab']['virtualenv']) end
   action :run

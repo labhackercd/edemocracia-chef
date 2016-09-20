@@ -66,3 +66,8 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '<%= node['config']['colab']['facebook_oauth_secre
 LANGUAGE_CODE = 'pt-br'
 
 RIBBON_ENABLED = False
+
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS

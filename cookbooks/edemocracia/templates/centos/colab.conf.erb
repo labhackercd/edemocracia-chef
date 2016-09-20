@@ -52,4 +52,9 @@ server {
     return 301 $scheme://beta.edemocracia.camara.leg.br$request_uri;
 }
 
+server {
+    server_name wikilegis.labhackercd.net;
+    return 301 $scheme://beta.edemocracia.camara.leg.br/wikilegis$request_uri;
+}
+
 # vim: ft=nginx

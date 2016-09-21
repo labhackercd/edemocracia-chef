@@ -13,6 +13,11 @@ server {
     alias  <%= node['config']['colab']['dir'] %>/colab/assets/;
   }
 
+  location /media/ {
+    alias  <%= node['config']['colab']['dir'] %>/colab/media/;
+  }
+
+
   location / {
     proxy_pass              http://colab;
     proxy_read_timeout      90;
@@ -28,6 +33,11 @@ server {
 
     location /expressao/assets/ {
       alias <%= node['config']['discourse']['dir'] %>/public/assets/;
+      gzip_static on;
+    }
+
+    location /expressao/javascripts/ {
+      alias <%= node['config']['discourse']['dir'] %>/public/javascripts/;
       gzip_static on;
     }
 

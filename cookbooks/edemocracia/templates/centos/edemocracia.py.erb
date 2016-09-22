@@ -11,6 +11,8 @@ urls = {
     'login': '/home'
 }
 
+middlewares = ['colab_edemocracia.middlewares.ForceLangMiddleware']
+
 dependencies = ['djangobower', 'compressor', 'easy_thumbnails', 'image_cropping', 'widget_tweaks']
 
 settings_variables = {

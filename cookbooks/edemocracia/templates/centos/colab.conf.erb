@@ -40,6 +40,14 @@ server {
       alias <%= node['config']['discourse']['dir'] %>/public/javascripts/;
       gzip_static on;
     }
+    location /expressao/images/ {
+      alias <%= node['config']['discourse']['dir'] %>/public/images/;
+      gzip_static on;
+    }
+    location /expressao/uploads/ {
+      alias <%= node['config']['discourse']['dir'] %>/public/uploads/;
+      gzip_static on;
+    }
 
     location /assets/ {
       alias <%= node['config']['discourse']['dir'] %>/public/assets/;

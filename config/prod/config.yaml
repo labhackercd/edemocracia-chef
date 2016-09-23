@@ -39,6 +39,7 @@ wikilegis:
   email_address: 'wikilegis@camara.leg.br'
   email_password: ''
   url_prefix: '/wikilegis'
+  login_url: '/home'
 discourse:
   dir: '/opt/discourse'
   rbenv: '/opt/rbenv/'
@@ -48,7 +49,7 @@ discourse:
   small_logo_url: '/static/img/logo-expressao-horizontal.png'
   fav_icon_url: '/static/img/favicon/favicon-32x32.png'
   repository: 'https://github.com/labhackercd/lab-discourse.git'
-  hostname: 'beta.edemocracia.camara.leg.br/discourse'
+  hostname: 'beta.edemocracia.camara.leg.br/'
 plugins:
   -
     name: 'wikilegis'

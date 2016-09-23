@@ -35,6 +35,7 @@ wikilegis:
   email_address: ''
   email_password: ''
   url_prefix: '/wikilegis'
+  login_url: '/home'
 discourse:
   dir: '/opt/discourse'
   rbenv: '/opt/rbenv/'

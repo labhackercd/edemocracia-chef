@@ -186,6 +186,13 @@ service 'colab' do
   action [:start, :enable]
 end
 
+cookbook_file '/etc/elasticsearch/elasticsearch.yml' do
+  owner 'root'
+  group 'elasticsearch'
+  mode '0644'
+  notifies :restart, 'service[elasticsearch]'
+end
+
 service 'elasticsearch' do
   supports :status => true, :restart => true
   action [:start, :enable]

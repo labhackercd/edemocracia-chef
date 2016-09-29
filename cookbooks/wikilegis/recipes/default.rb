@@ -98,5 +98,5 @@ end
 
 service 'wikilegis' do
   supports :status => true, :restart => true, :reload => true
-  action [:start, :enable]
+  action [:restart, :enable]
 end

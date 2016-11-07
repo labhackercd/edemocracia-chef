@@ -104,40 +104,41 @@ file '/etc/colab/secret.key' do
   action :create_if_missing
   owner "#{node['config']['system']['user']}"
   group "colab"
-  mode '0755'
+  mode '0644'
 end
 
 template '/etc/colab/settings.py' do
   owner "#{node['config']['system']['user']}"
   group "colab"
-  mode '0755'
+  mode '0644'
 end
+
 
 template '/etc/colab/settings.d/01-database.py' do
   owner "#{node['config']['system']['user']}"
   group "colab"
-  mode '0755'
+  mode '0644'
 end
 
 cookbook_file '/etc/colab/settings.d/02-logging.py' do
   action :create
   owner "#{node['config']['system']['user']}"
   group "colab"
-  mode '0755'
+  mode '0644'
 end
 
 cookbook_file '/etc/colab/settings.d/03-staticfiles.py' do
   action :create
   owner "#{node['config']['system']['user']}"
   group "colab"
-  mode '0755'
+  mode '0644'
 end
 
 cookbook_file '/etc/colab/settings.d/04-memcached.py' do
   action :create
   owner "#{node['config']['system']['user']}"
   group "colab"
-  mode '0755'
+  mode '0644'
 end
 
 execute 'migrate' do

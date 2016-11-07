@@ -1,0 +1,16 @@
+[settings]
+
+EMAIL_HOST = <%= node['config']['audiencias']['email_host'] %>
+EMAIL_HOST_USER = <%= node['config']['audiencias']['email_address'] %>
+EMAIL_HOST_PASSWORD = <%= node['config']['audiencias']['email_password'] %>
+EMAIL_PORT = <%= node['config']['audiencias']['email_port'] %>
+EMAIL_USE_TLS = <%= node['config']['audiencias']['email_use_tls'] %>
+DEFAULT_FROM_EMAIL = <%= node['config']['audiencias']['email_from'] %>
+DJANGO_SECRET_KEY = <%= File.read("#{node['config']['audiencias']['dir']}/secret.key").strip %>
+DEBUG = False
+DATABASE_URL = postgres://audiencias@127.0.0.1:5432/audiencias
+FORCE_SCRIPT_NAME = <%= node['config']['audiencias']['url_prefix'] %>
+LOGIN_URL = <%= node['config']['audiencias']['login_url'] %>
+YOUTUBE_API_KEY = <%= node['config']['audiencias']['youtube_api_key'] %>
+YOUTUBE_CHANNEL_ID = <%= node['config']['audiencias']['youtube_channel_id'] %>
+YOUTUBE_SEARCH_QUERY = <%= node['config']['audiencias']['youtube_search_query'] %>

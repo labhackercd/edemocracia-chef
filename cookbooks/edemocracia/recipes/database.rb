@@ -20,7 +20,7 @@ service "postgresql" do
 end
 
 # Create database users for all applications
-applications_usernames = ['colab', 'wikilegis', 'discourse', node['config']['system']['user']]
+applications_usernames = ['colab', 'wikilegis', 'discourse', 'audiencias', node['config']['system']['user']]
 
 applications_usernames.each do |username|
   execute "createuser:#{username}" do
@@ -33,7 +33,7 @@ applications_usernames.each do |username|
 end
 
 # Create databases for all applications
-applications_database = {colab: 'colab', wikilegis: 'wikilegis', discourse: 'discourse'}
+applications_database = {colab: 'colab', wikilegis: 'wikilegis', discourse: 'discourse', audiencias: 'audiencias'}
 
 applications_database.each do |username, database|
   execute "createdb:#{database}" do

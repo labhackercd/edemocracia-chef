@@ -9,11 +9,13 @@ colab:
   server_email: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   email_subject_prefix: '[e-Democracia]'
   email_host: ''
-  email_port: ''
-  email_use_tls: False
+  email_port: 25
+  email_use_tls: 'False'
   email_address: ''
   email_password: ''
-  allowerd_hosts:
+  allowed_hosts:
+    - '127.0.0.1'
+    - 'localhost'
     - 'edemocracia.dev'
   site_url: 'http://edemocracia.dev'
   plugins_dir: '/opt/colab-plugins'
@@ -29,8 +31,8 @@ wikilegis:
   repository: 'https://github.com/labhackercd/wikilegis.git'
   virtualenv: '/opt/virtualenvs/wikilegis'
   email_host: ''
-  email_port: ''
-  email_use_tls: False
+  email_port: 25
+  email_use_tls: 'False'
   email_from: '"Portal e-Democracia[Wikilegis]" <email@email.com>'
   email_address: ''
   email_password: ''
@@ -45,6 +47,22 @@ discourse:
   small_logo_url: '/discourse/assets/small-logo.png'
   fav_icon_url: '/discourse/assets/fav_icon.png'
   repository: 'https://github.com/labhackercd/lab-discourse.git'
+audiencias:
+  dir: '/opt/audiencias'
+  branch: 'master'
+  repository: 'https://github.com/labhackercd/audiencias-publicas.git'
+  virtualenv: '/opt/virtualenvs/audiencias'
+  email_host: ''
+  email_port: 25
+  email_use_tls: 'False'
+  email_from: '"Portal e-Democracia[audiencias]" <email@email.com>'
+  email_address: ''
+  email_password: ''
+  url_prefix: '/audiencias'
+  login_url: '/home'
+  youtube_api_key: ''
+  youtube_channel_id: 'UC-ZkSRh-7UEuwXJQ9UMCFJA'
+  youtube_search_query: 'audiencia publica'
 plugins:
   -
     name: 'wikilegis'
@@ -53,6 +71,10 @@ plugins:
   -
     name: 'discourse'
     url: 'https://github.com/labhackercd/colab-discourse-plugin.git'
+    branch: 'master'
+  -
+    name: 'audiencias'
+    url: 'https://github.com/labhackercd/colab-audiencias-plugin.git'
     branch: 'master'
   -
     name: 'edemocracia'

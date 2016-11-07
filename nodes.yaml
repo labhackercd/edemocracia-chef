@@ -6,4 +6,5 @@ edemocracia:
     - recipe[edemocracia::colab]
     - recipe[wikilegis]
     - recipe[discourse]
+    - recipe[audiencias]
     - recipe[edemocracia::colab_plugins]

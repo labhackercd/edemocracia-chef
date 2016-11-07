@@ -1,0 +1,15 @@
+[Unit]
+Description=Audiencias Publicas
+Before=audiencias_workers.service audiencias_cluster.service
+Requires=audiencias_workers.service audiencias_cluster.service
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/audiencias
+PermissionsStartOnly=true
+WorkingDirectory=<%= node['config']['audiencias']['dir'] %>
+ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g audiencias /var/lock/audiencias
+ExecStart=<%= node['config']['audiencias']['virtualenv'] %>/bin/daphne -p 7000 audiencias_publicas.asgi:channel_layer
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

@@ -10,6 +10,7 @@ Vagrant.configure(2) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080 # Colab under nginx
   config.vm.network "forwarded_port", guest: 8080, host: 8081 # Discourse
   config.vm.network "forwarded_port", guest: 9000, host: 8082 # Wikilegis
+  config.vm.network "forwarded_port", guest: 7000, host: 8083 # Audiencias
 
   directory_name = "../edem_applications"
   Dir.mkdir(directory_name) unless File.exists?(directory_name)

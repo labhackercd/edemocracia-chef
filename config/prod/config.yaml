@@ -50,6 +50,22 @@ discourse:
   fav_icon_url: '/static/img/favicon/favicon-32x32.png'
   repository: 'https://github.com/labhackercd/lab-discourse.git'
   hostname: 'beta.edemocracia.camara.leg.br/'
+audiencias:
+  dir: '/opt/audiencias'
+  branch: 'master'
+  repository: 'https://github.com/labhackercd/audiencias-publicas.git'
+  virtualenv: '/opt/virtualenvs/audiencias'
+  email_host: ''
+  email_port: 25
+  email_use_tls: 'False'
+  email_from: '"Portal e-Democracia[audiencias]" <email@email.com>'
+  email_address: ''
+  email_password: ''
+  url_prefix: '/audiencias'
+  login_url: '/home'
+  youtube_api_key: ''
+  youtube_channel_id: 'UC-ZkSRh-7UEuwXJQ9UMCFJA'
+  youtube_search_query: 'audiencia publica'
 plugins:
   -
     name: 'wikilegis'
@@ -58,6 +74,10 @@ plugins:
   -
     name: 'discourse'
     url: 'https://github.com/labhackercd/colab-discourse-plugin.git'
+    branch: 'master'
+  -
+    name: 'audiencias'
+    url: 'https://github.com/labhackercd/colab-audiencias-plugin.git'
     branch: 'master'
   -
     name: 'edemocracia'

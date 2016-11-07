@@ -1,0 +1,14 @@
+[Unit]
+Description=Audiencias Publicas Workers
+PartOf=audiencias.service
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/audiencias_workers
+PermissionsStartOnly=true
+WorkingDirectory=<%= node['config']['audiencias']['dir'] %>
+ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g audiencias /var/lock/audiencias_workers
+ExecStart=<%= node['config']['audiencias']['virtualenv'] %>/bin/python manage.py runworker
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

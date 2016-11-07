@@ -57,6 +57,12 @@ task :collectstatic => ssh_config_file do
   sh 'ssh', '-F', ssh_config_file, 'edemocracia', "#{config['colab']['virtualenv']}/bin/colab-admin collectstatic --noinput"
 end
 
+desc "Collect Audiencias Publicas static files"
+task :audiencias_collectstatic => ssh_config_file do
+  sh 'ssh', '-F', ssh_config_file, 'edemocracia', "#{config['audiencias']['virtualenv']}/bin/python #{config['audiencias']['dir']}/manage.py bower install"
+  sh 'ssh', '-F', ssh_config_file, 'edemocracia', "#{config['audiencias']['virtualenv']}/bin/python #{config['audiencias']['dir']}/manage.py collectstatic --noinput"
+end
+
 task 'bootstrap_common' => ssh_config_file
 task 'run_input' => ssh_config_file
 

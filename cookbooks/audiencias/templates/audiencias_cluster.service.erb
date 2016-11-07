@@ -1,0 +1,14 @@
+[Unit]
+Description=Audiencias Publicas Cluster
+PartOf=audiencias.service
+
+[Service]
+EnvironmentFile=-/etc/sysconfig/audiencias_cluster
+PermissionsStartOnly=true
+WorkingDirectory=<%= node['config']['audiencias']['dir'] %>
+ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g audiencias /var/lock/audiencias_cluster
+ExecStart=<%= node['config']['audiencias']['virtualenv'] %>/bin/python manage.py qcluster
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

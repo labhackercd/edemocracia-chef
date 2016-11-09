@@ -54,8 +54,9 @@ directory node['config']['discourse']['rbenv'] do
   action :create
 end
 
+
 template "#{node['config']['discourse']['dir']}/config/database.yml" do
-  user node['config']['system']['user']
+  owner node['config']['system']['user']
   group 'discourse'
   mode '0644'
 end
@@ -81,7 +82,7 @@ file "#{node['config']['discourse']['dir']}/sso_secret.key" do
 end
 
 template "#{node['config']['discourse']['dir']}/config/site_settings.yml" do
-  user node['config']['system']['user']
+  owner node['config']['system']['user']
   group 'discourse'
   mode '0644'
 end

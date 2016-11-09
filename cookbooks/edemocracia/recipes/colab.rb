@@ -1,6 +1,6 @@
 dependencies = ['git', 'unzip', 'gettext', 'libxml2-devel', 'libxslt-devel', 'openssl-devel', 'gcc', 'memcached',
                 'libffi-devel', 'python-devel', 'python-pip', 'python-virtualenvwrapper', 'redis', 'elasticsearch',
-                'java-1.8.0-openjdk']
+                'java-1.8.0-openjdk', 'libjpeg-turbo-devel', 'zlib-devel']
 
 cookbook_file '/etc/yum.repos.d/elasticsearch.repo' do
   owner 'root'
@@ -60,7 +60,7 @@ execute "colab:deps" do
 end
 
 execute "colab:extra_deps" do
-  command "#{node['config']['colab']['virtualenv']}/bin/pip install psycopg2 gunicorn elasticsearch python-memcached"
+  command "#{node['config']['colab']['virtualenv']}/bin/pip install psycopg2 gunicorn elasticsearch python-memcached easy_thumbnails"
 end
 
 directory '/var/log/colab' do

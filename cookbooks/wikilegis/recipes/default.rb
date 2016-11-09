@@ -18,8 +18,6 @@ end
 git "#{node['config']['wikilegis']['dir']}" do
   repository node['config']['wikilegis']['repository']
   revision node['config']['wikilegis']['branch']
-  group "#{node['config']['system']['user']}"
-  group "wikilegis"
   action :sync
 end
 

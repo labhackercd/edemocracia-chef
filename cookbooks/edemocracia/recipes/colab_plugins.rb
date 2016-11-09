@@ -78,4 +78,6 @@ end
 execute 'collectstatic' do
   command "#{node['config']['colab']['virtualenv']}/bin/colab-admin rebuild_index --noinput"
   user "#{node['config']['system']['user']}"
+  retries 3
+  retry_delay 5
 end

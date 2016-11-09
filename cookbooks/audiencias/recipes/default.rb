@@ -20,10 +20,19 @@ execute 'install:bower' do
   action :run
 end
 
+directory "#{node['config']['audiencias']['dir']}" do
+  owner "#{node['config']['system']['user']}"
+  group "audiencias"
+  mode '0755'
+  action :create
+  recursive true
+end
+
+
 git "#{node['config']['audiencias']['dir']}" do
   repository node['config']['audiencias']['repository']
   revision node['config']['audiencias']['branch']
-  group "#{node['config']['system']['user']}"
+  user "#{node['config']['system']['user']}"
   group "audiencias"
   action :sync
 end
@@ -43,7 +52,7 @@ directory "#{node['config']['audiencias']['dir']}/static/bower_components" do
 end
 
 execute "virtualenv" do
-  command "pip install virtualenv"
+  command "pip install -U virtualenv"
 end
 
 execute "virtualenv #{node['config']['audiencias']['virtualenv']} -p python3" do

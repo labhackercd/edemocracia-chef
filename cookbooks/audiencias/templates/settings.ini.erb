@@ -9,8 +9,13 @@ DEFAULT_FROM_EMAIL = <%= node['config']['audiencias']['email_from'] %>
 DJANGO_SECRET_KEY = <%= File.read("#{node['config']['audiencias']['dir']}/secret.key").strip %>
 DEBUG = False
 DATABASE_URL = postgres://audiencias@127.0.0.1:5432/audiencias
+ENABLE_REMOTE_USER = 1
 FORCE_SCRIPT_NAME = <%= node['config']['audiencias']['url_prefix'] %>
+STATIC_URL = <%= node['config']['audiencias']['url_prefix'] %>/static/
+SESSION_COOKIE_NAME = audiencias_session
 LOGIN_URL = <%= node['config']['audiencias']['login_url'] %>
+LOGIN_REDIRECT_URL = /home
+LOGOUT_REDIRECT_URL = /home
 YOUTUBE_API_KEY = <%= node['config']['audiencias']['youtube_api_key'] %>
 YOUTUBE_CHANNEL_ID = <%= node['config']['audiencias']['youtube_channel_id'] %>
 YOUTUBE_SEARCH_QUERY = <%= node['config']['audiencias']['youtube_search_query'] %>

@@ -61,7 +61,7 @@ audiencias:
   login_url: '/home'
   youtube_api_key: ''
   youtube_channel_id: 'UC-ZkSRh-7UEuwXJQ9UMCFJA'
-  youtube_search_query: 'audiencia publica'
+  youtube_search_query: 'audiência pública'
 plugins:
   -
     name: 'wikilegis'

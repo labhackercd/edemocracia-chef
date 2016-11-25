@@ -80,6 +80,7 @@ template "#{node['config']['audiencias']['dir']}/audiencias_publicas/settings.in
   owner "#{node['config']['system']['user']}"
   group "audiencias"
   mode '0755'
+  notifies :restart, 'service[audiencias]'
 end
 
 execute 'migrate' do

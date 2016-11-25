@@ -75,7 +75,7 @@ service 'elasticsearch' do
   action :restart
 end
 
-execute 'collectstatic' do
+execute 'rebuild_index' do
   command "#{node['config']['colab']['virtualenv']}/bin/colab-admin rebuild_index --noinput"
   user "#{node['config']['system']['user']}"
   retries 3

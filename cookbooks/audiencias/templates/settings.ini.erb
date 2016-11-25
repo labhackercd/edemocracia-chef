@@ -10,12 +10,15 @@ DJANGO_SECRET_KEY = <%= File.read("#{node['config']['audiencias']['dir']}/secret
 DEBUG = False
 DATABASE_URL = postgres://audiencias@127.0.0.1:5432/audiencias
 ENABLE_REMOTE_USER = 1
-FORCE_SCRIPT_NAME = <%= node['config']['audiencias']['url_prefix'] %>
-STATIC_URL = <%= node['config']['audiencias']['url_prefix'] %>/static/
+URL_PREFIX = <%= node['config']['audiencias']['url_prefix'] %>
+FORCE_SCRIPT_NAME = <%= node['config']['audiencias']['force_script_name'] %>
+STATIC_URL = <%= node['config']['audiencias']['force_script_name'] %>/static/
 SESSION_COOKIE_NAME = audiencias_session
 LOGIN_URL = <%= node['config']['audiencias']['login_url'] %>
 LOGIN_REDIRECT_URL = /home
 LOGOUT_REDIRECT_URL = /home
+ALLOWED_HOSTS = <%= node['config']['audiencias']['allowed_hosts'] %>
 YOUTUBE_API_KEY = <%= node['config']['audiencias']['youtube_api_key'] %>
 YOUTUBE_CHANNEL_ID = <%= node['config']['audiencias']['youtube_channel_id'] %>
 YOUTUBE_SEARCH_QUERY = <%= node['config']['audiencias']['youtube_search_query'] %>
+WORDS_BLACK_LIST = merda,cu,cuzao,cuzona,cusao,cusona,bunda,fodido,fodida,foda,foder,fodedor,fudido,fudida,fuder,chupa,chupada,chupador,chupadora,boquete,boqueteira,boquetera,boketeira,boketera,xupa,xupada,xupador,xupadora,pauduro,pauzudo,xoxota,chochota,buceta,boceta,busseta,bosseta,cacete,cassete,caceta,kacete,kassete,caralho,karalho,caraleo,pinto,pica,rola,roludo,gozado,gozada,goso,gosa,gosado,gosado,puta,puto,putinho,putinha,putona,putana,putaria,grelo,grelinho,filhodaputa,filhosdaputa,puta,fdps,siririca,punheta,trepar,trepada,trepadeira,caralho,caralhu,karalho,karalhu,tomarnocu,tomanocu,vadia,bosta,quenga,rabo,bolsa,cuzinho,piroca

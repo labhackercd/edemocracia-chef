@@ -4,5 +4,5 @@ Host *
 
 Host edemocracia
   Hostname 192.168.66.10
-  User edemocracia
+  User msfernandes
   Port 22

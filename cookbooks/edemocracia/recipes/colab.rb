@@ -177,6 +177,13 @@ template '/etc/systemd/system/celeryd.service' do
   mode '0644'
 end
 
+template '/etc/cron.d/colab' do
+  source 'colab-cron.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
 service 'redis' do
   supports :status => true, :restart => true
   action [:start, :enable]

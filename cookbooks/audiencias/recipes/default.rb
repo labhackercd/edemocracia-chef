@@ -128,6 +128,13 @@ template '/etc/systemd/system/audiencias.service' do
   notifies :restart, 'service[audiencias]'
 end
 
+template '/etc/cron.d/audiencias' do
+  source 'audiencias-cron.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
 service 'redis' do
   supports :status => true, :restart => true, :reload => true
   action [:restart, :enable]

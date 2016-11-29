@@ -94,6 +94,13 @@ template '/etc/systemd/system/wikilegis.service' do
   notifies :restart, 'service[wikilegis]'
 end
 
+template '/etc/cron.d/wikilegis' do
+  source 'wikilegis-cron.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
 service 'wikilegis' do
   supports :status => true, :restart => true, :reload => true
   action [:restart, :enable]

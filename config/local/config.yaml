@@ -1,10 +1,10 @@
 system:
   user: 'vagrant'
 colab:
-  dir: '/opt/colab'
+  dir: '/edem_applications/colab'
   branch: 'master'
   repository: 'https://github.com/labhackercd/edemocracia-colab.git'
-  virtualenv: '/opt/virtualenvs/colab'
+  virtualenv: '/edem_applications/virtualenvs/colab'
   email_from: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   server_email: '"Portal e-Democracia" <portal@edemocracia.gov.br>'
   email_subject_prefix: '[e-Democracia]'
@@ -18,7 +18,7 @@ colab:
     - 'localhost'
     - 'edemocracia.dev'
   site_url: 'http://edemocracia.dev'
-  plugins_dir: '/opt/colab-plugins'
+  plugins_dir: '/edem_applications/colab-plugins'
   admins:
     - ["Admin", "admin@email.com"]
   google_oauth_key: ''
@@ -60,7 +60,7 @@ audiencias:
   email_password: ''
   force_script_name: '/audiencias'
   url_prefix: 'audiencias'
-  allowed_hosts: 'edemocracia.dev'
+  allowed_hosts: '127.0.0.1'
   login_url: '/home'
   youtube_api_key: ''
   youtube_channel_id: 'UC-ZkSRh-7UEuwXJQ9UMCFJA'

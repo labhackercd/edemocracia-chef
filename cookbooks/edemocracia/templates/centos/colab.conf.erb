@@ -13,6 +13,7 @@ server {
   error_log             /var/log/nginx/colab.error.log;
   client_max_body_size  4G;
 
+  <% if node['environment'] != 'local' %>
   location /static/ {
     alias  <%= node['config']['colab']['dir'] %>/colab/assets/;
   }
@@ -20,6 +21,7 @@ server {
   location /media/ {
     alias  <%= node['config']['colab']['dir'] %>/colab/media/;
   }
+  <% end %>
 
   location /audiencias/ {
     proxy_pass $scheme://audiencias_app;

@@ -1,0 +1,6 @@
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+source <%= node['config']['colab']['virtualenv'] %>/bin/activate
+alias runserver='colab-admin runserver 8001'

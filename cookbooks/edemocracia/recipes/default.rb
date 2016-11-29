@@ -36,3 +36,19 @@ execute 'semodule -i edem_nginx.pp' do
   action :run
 end
 
+cookbook_file '/tmp/audiencias.pp' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+cookbook_file '/tmp/audiencias.te' do
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+execute 'semodule -i audiencias.pp' do
+  cwd "/tmp/"
+  action :run
+end

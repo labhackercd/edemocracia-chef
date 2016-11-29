@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 
 ## Set to false in production
+<% if node['environment'] == 'local' %>
+DEBUG = True
+TEMPLATE_DEBUG = True
+<% else %>
 DEBUG = False
 TEMPLATE_DEBUG = False
+<% end %>
 
 ## System admins
 ADMINS = [

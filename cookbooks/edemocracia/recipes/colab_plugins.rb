@@ -81,3 +81,16 @@ execute 'rebuild_index' do
   retries 3
   retry_delay 5
 end
+
+if node['environment'] == 'local'
+  service 'colab' do
+    supports :status => true, :restart => true, :reload => true
+    action [:stop, :disable]
+  end
+  template '/home/vagrant/.bashrc' do
+    source 'dev-bashrc.erb'
+    owner "#{node['config']['system']['user']}"
+    group 'root'
+    mode '0644'
+  end
+end

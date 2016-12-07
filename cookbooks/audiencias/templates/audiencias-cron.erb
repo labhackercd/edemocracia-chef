@@ -1,1 +1,1 @@
-*/30 * * * * root cd <%= node['config']['audiencias']['dir'] %>/schedule_bot/ && <%= node['config']['audiencias']['virtualenv'] %>/bin/scrapy crawl agenda
+*/30 * * * * root cd <%= node['config']['audiencias']['dir'] %>/schedule_bot/ ; <%= node['config']['audiencias']['virtualenv'] %>/bin/scrapy crawl agenda

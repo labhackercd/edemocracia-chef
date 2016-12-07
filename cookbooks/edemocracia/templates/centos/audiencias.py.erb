@@ -4,7 +4,8 @@ from colab.plugins.utils.menu import colab_url_factory
 name = 'colab_audiencias'
 verbose_name = 'Colab Audiencias Plugin Plugin'
 
-upstream = 'http://127.0.0.1:7000/'
+upstream = 'http://127.0.0.1:7000/audiencias/'
+api_key = '<%= File.read("#{node['config']['audiencias']['dir']}/secret.key").strip %>'
 
 urls = {
     'include': 'colab_audiencias.urls',

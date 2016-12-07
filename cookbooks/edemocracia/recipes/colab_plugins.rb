@@ -22,7 +22,7 @@ node['config']['plugins'].each do |plugin|
 
   git "#{node['config']['colab']['plugins_dir']}/#{plugin['name']}"  do
     repository plugin['url']
-    reference plugin['branch']
+    revision plugin['branch']
     user "#{node['config']['system']['user']}"
     group 'colab'
     action :sync

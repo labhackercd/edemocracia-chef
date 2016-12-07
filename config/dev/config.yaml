@@ -59,7 +59,7 @@ audiencias:
   email_password: ''
   force_script_name: '/audiencias'
   url_prefix: 'audiencias'
-  allowed_hosts: 'edemocracia.dev'
+  allowed_hosts: 'edemocracia.dev, 127.0.0.1'
   login_url: '/home'
   youtube_api_key: ''
   youtube_channel_id: 'UC-ZkSRh-7UEuwXJQ9UMCFJA'

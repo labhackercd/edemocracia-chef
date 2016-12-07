@@ -1,4 +1,4 @@
-0 6 * * *       <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py close_bill
-0 7 * * *       <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py send_mail
-0 8 * * *       <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py send_notification_daily
-0 9 * * 6       <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py send_notification_weekly
+0 1 * * * root <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py close_bill
+0 5 * * * root <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py send_mail
+30 5 * * * root <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py send_notification_daily
+0 6 * * 6 root <%= node['config']['wikilegis']['virtualenv'] %>/bin/python <%= node['config']['wikilegis']['dir'] %>/manage.py send_notification_weekly

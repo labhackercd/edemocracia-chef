@@ -128,11 +128,14 @@ template '/etc/systemd/system/audiencias.service' do
   notifies :restart, 'service[audiencias]'
 end
 
+service "crond"
+
 template '/etc/cron.d/audiencias' do
   source 'audiencias-cron.erb'
   owner 'root'
   group 'root'
   mode '0644'
+  notifies :restart, 'service[crond]'
 end
 
 service 'redis' do

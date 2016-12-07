@@ -1,6 +1,6 @@
 
-*   *   *   *   *   <%= node['config']['colab']['virtualenv'] %>/bin/colab-admin update_index --age=1 &> /dev/null
+*   *   *   *   *  root  <%= node['config']['colab']['virtualenv'] %>/bin/colab-admin update_index --age=1 &> /dev/null
 
-34  2   *   *   *   <%= node['config']['colab']['virtualenv'] %>/bin/colab-admin rebuild_index --noinput &> /dev/null
+34  2   *   *   *  root  <%= node['config']['colab']['virtualenv'] %>/bin/colab-admin rebuild_index --noinput &> /dev/null
 
-27  3   *   *   *   <%= node['config']['colab']['virtualenv'] %>/bin/colab-admin clearsessions &> /dev/null
+27  3   *   *   *  root  <%= node['config']['colab']['virtualenv'] %>/bin/colab-admin clearsessions &> /dev/null

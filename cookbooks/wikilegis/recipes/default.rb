@@ -94,11 +94,14 @@ template '/etc/systemd/system/wikilegis.service' do
   notifies :restart, 'service[wikilegis]'
 end
 
+service "crond"
+
 template '/etc/cron.d/wikilegis' do
   source 'wikilegis-cron.erb'
   owner 'root'
   group 'root'
   mode '0644'
+  notifies :restart, 'service[crond]'
 end
 
 service 'wikilegis' do

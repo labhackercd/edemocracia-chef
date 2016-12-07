@@ -177,11 +177,14 @@ template '/etc/systemd/system/celeryd.service' do
   mode '0644'
 end
 
+service "crond"
+
 template '/etc/cron.d/colab' do
   source 'colab-cron.erb'
   owner 'root'
   group 'root'
   mode '0644'
+  notifies :restart, 'service[crond]'
 end
 
 service 'redis' do

@@ -130,6 +130,10 @@ end
 
 service "crond"
 
+file '/etc/cron.d/audiencias' do 
+  action :delete
+end
+
 template '/etc/cron.d/audiencias' do
   source 'audiencias-cron.erb'
   owner 'root'

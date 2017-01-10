@@ -15,8 +15,9 @@ group 'audiencias' do
   members ['audiencias', node['config']['system']['user']]
 end
 
-execute 'install:bower' do
-  command 'npm install -g bower'
+execute 'install:npm_deps' do
+  cwd node['config']['audiencias']['dir']
+  command 'npm install'
   action :run
 end
 
@@ -130,7 +131,7 @@ end
 
 service "crond"
 
-file '/etc/cron.d/audiencias' do 
+file '/etc/cron.d/audiencias' do
   action :delete
 end
 

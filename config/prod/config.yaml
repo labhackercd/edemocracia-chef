@@ -16,8 +16,8 @@ colab:
   allowed_hosts:
     - '200.219.134.68'
     - '200.219.134.77'
-    - 'beta.edemocracia.camara.leg.br'
-    - 'beta.edemocracia.camara.gov.br'
+    - 'edemocracia.camara.leg.br'
+    - 'edemocracia.camara.gov.br'
     - 'edemocracia.labhackercd.net'
   site_url: 'http://edemocracia.labhackercd.net'
   plugins_dir: '/opt/colab-plugins'
@@ -49,7 +49,7 @@ discourse:
   small_logo_url: '/static/img/logo-expressao-horizontal.png'
   fav_icon_url: '/static/img/favicon/favicon-32x32.png'
   repository: 'https://github.com/labhackercd/lab-discourse.git'
-  hostname: 'beta.edemocracia.camara.leg.br'
+  hostname: 'edemocracia.camara.leg.br'
 audiencias:
   dir: '/opt/audiencias'
   branch: 'master'
@@ -63,11 +63,11 @@ audiencias:
   email_password: ''
   force_script_name: '/audiencias'
   url_prefix: 'audiencias'
-  allowed_hosts: 'beta.edemocracia.camara.leg.br, 127.0.0.1'
+  allowed_hosts: 'edemocracia.camara.leg.br, 127.0.0.1'
   login_url: '/home'
   youtube_api_key: ''
   youtube_channel_id: 'UC-ZkSRh-7UEuwXJQ9UMCFJA'
-  youtube_search_query: 'audiência pública'
+  youtube_search_query: ''
 plugins:
   -
     name: 'wikilegis'

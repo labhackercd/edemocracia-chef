@@ -12,4 +12,6 @@ DEBUG = False
 DATABASE_URL = postgres://wikilegis@127.0.0.1:5432/wikilegis
 COMPRESS_OFFLINE = True
 FORCE_SCRIPT_NAME = <%= node['config']['wikilegis']['url_prefix'] %>
+STATIC_URL = <%= node['config']['wikilegis']['url_prefix'] %>/static/
+MEDIA_URL = <%= node['config']['wikilegis']['url_prefix'] %>/media/
 LOGIN_URL = <%= node['config']['wikilegis']['login_url'] %>

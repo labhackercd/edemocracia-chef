@@ -3,8 +3,7 @@
 require 'yaml'
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "centos7"
-  config.vm.box_url = "http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7-x86_64-Vagrant-1605_01.VirtualBox.box"
+  config.vm.box = "centos/7"
   config.vm.box_check_update = true
 
   config.vm.network "forwarded_port", guest: 80, host: 8080 # Colab under nginx

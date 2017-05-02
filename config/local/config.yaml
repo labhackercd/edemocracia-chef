@@ -27,7 +27,7 @@ colab:
   facebook_oauth_secret: ''
 wikilegis:
   dir: '/opt/wikilegis'
-  branch: 'colab_integration'
+  branch: 'change-static-root'
   repository: 'https://github.com/labhackercd/wikilegis.git'
   virtualenv: '/opt/virtualenvs/wikilegis'
   email_host: ''
@@ -36,6 +36,9 @@ wikilegis:
   email_from: '"Portal e-Democracia[Wikilegis]" <email@email.com>'
   email_address: ''
   email_password: ''
+  database_name: 'wikilegis'
+  legacy_wikilegis: 'False'
+  legacy_database: 'wikilegis'
   url_prefix: '/wikilegis'
   login_url: '/home'
 discourse:

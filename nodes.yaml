@@ -1,6 +1,7 @@
 edemocracia:
   run_list:
     - recipe[basics]
+    - recipe[nodejs::nodejs_from_source]
     - recipe[edemocracia]
     - recipe[edemocracia::database]
     - recipe[edemocracia::colab]

@@ -1,17 +1,51 @@
 [settings]
 
+# Application settings
+API_KEY = <%= File.read("#{node['config']['wikilegis']['dir']}/api.key").strip %>
+SECRET_KEY = <%= File.read("#{node['config']['wikilegis']['dir']}/secret.key").strip %>
+FORCE_SCRIPT_NAME = <%= node['config']['wikilegis']['url_prefix'] %>
+DEBUG = False
+DATABASE_ENGINE = postgresql
+DATABASE_NAME = <%= node['config']['wikilegis']['database_name'] %>
+DATABASE_USER = wikilegis
+DATABASE_PASSWORD =
+DATABASE_HOST = 127.0.0.1
+DATABASE_PORT = 5432
+
+# Authentication settings
+LOGIN_URL = <%= node['config']['wikilegis']['login_url'] %>
+LOGIN_REDIRECT_URL = /
+AUTH_USER_MODEL = accounts.User
+ENABLE_REMOTE_USER = 1
+SESSION_COOKIE_NAME = wikilegis_session
+ACCOUNT_ACTIVATION_REQUIRED = 0
+ACCOUNT_ACTIVATION_DAYS = 7
+ENABLE_SOCIAL_AUTH = 0
+
+# Email settings
 EMAIL_HOST = <%= node['config']['wikilegis']['email_host'] %>
 EMAIL_HOST_USER = <%= node['config']['wikilegis']['email_address'] %>
 EMAIL_HOST_PASSWORD = <%= node['config']['wikilegis']['email_password'] %>
 EMAIL_PORT = <%= node['config']['wikilegis']['email_port'] %>
 EMAIL_USE_TLS = <%= node['config']['wikilegis']['email_use_tls'] %>
 DEFAULT_FROM_EMAIL = <%= node['config']['wikilegis']['email_from'] %>
-DJANGO_SECRET_KEY = <%= File.read("#{node['config']['wikilegis']['dir']}/secret.key").strip %>
-API_KEY = <%= File.read("#{node['config']['wikilegis']['dir']}/api.key").strip %>
-DEBUG = False
-DATABASE_URL = postgres://wikilegis@127.0.0.1:5432/wikilegis
-COMPRESS_OFFLINE = True
-FORCE_SCRIPT_NAME = <%= node['config']['wikilegis']['url_prefix'] %>
+
+# Locale settings
+LANGUAGE_CODE = pt-br
+TIME_ZONE = America/Sao_Paulo
+
+# Logging settings
+LOG_DIR = wikilegis.log
+
+# Staticfiles settings
 STATIC_URL = <%= node['config']['wikilegis']['url_prefix'] %>/static/
 MEDIA_URL = <%= node['config']['wikilegis']['url_prefix'] %>/media/
-LOGIN_URL = <%= node['config']['wikilegis']['login_url'] %>
+
+# Legacy Wikilegis settings
+CONNECT_TO_LEGACY_WIKILEGIS = <%= node['config']['wikilegis']['legacy_wikilegis'] %>
+LEGACY_DATABASE_ENGINE = postgresql
+LEGACY_DATABASE_NAME = <%= node['config']['wikilegis']['legacy_database'] %>
+LEGACY_DATABASE_USER = wikilegis
+LEGACY_DATABASE_PASSWORD =
+LEGACY_DATABASE_HOST = 127.0.0.1
+LEGACY_DATABASE_PORT = 5432

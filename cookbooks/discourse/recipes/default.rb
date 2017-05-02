@@ -2,7 +2,7 @@ dependencies = ['epel-release', 'ruby', 'ruby-devel', 'nginx',
                 'postgresql', 'postgresql-server', 'postgresql-contrib', 'redis',
                 'ImageMagick', 'libxml2', 'gifsicle', 'libpqxx-devel', 'make',
                 'libjpeg', 'policycoreutils-python', 'gcc-c++', 'optipng', 'jhead',
-                'jpegoptim', 'libjpeg-turbo-utils', 'nodejs', 'npm']
+                'jpegoptim', 'libjpeg-turbo-utils']
 
 dependencies.each do |package_name|
   package "#{package_name}"
@@ -13,7 +13,7 @@ execute 'install:svgo' do
   action :run
 end
 
-execute 'gem install bundler'
+execute 'sudo gem install bundler'
 
 user 'discourse' do
   home "/home/#{node['config']['system']['user']}/"

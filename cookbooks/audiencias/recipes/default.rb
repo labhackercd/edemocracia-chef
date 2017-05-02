@@ -15,11 +15,6 @@ group 'audiencias' do
   members ['audiencias', node['config']['system']['user']]
 end
 
-execute 'install:bower' do
-  command 'npm install -g bower'
-  action :run
-end
-
 directory "#{node['config']['audiencias']['dir']}" do
   owner "#{node['config']['system']['user']}"
   group "audiencias"
@@ -51,6 +46,12 @@ directory "#{node['config']['audiencias']['dir']}/static/bower_components" do
   action :create
 end
 
+execute 'npm:install' do
+  cwd node['config']['audiencias']['dir']
+  command 'npm install'
+  action :run
+end
+
 execute "virtualenv" do
   command "pip install -U virtualenv"
 end
@@ -65,7 +66,7 @@ execute "audiencias:deps" do
 end
 
 execute "audiencias:extra_deps" do
-  command "#{node['config']['audiencias']['virtualenv']}/bin/pip install gunicorn psycopg2"
+  command "#{node['config']['audiencias']['virtualenv']}/bin/pip install gunicorn psycopg2 django-q"
 end
 
 file "#{node['config']['audiencias']['dir']}/secret.key" do
@@ -130,7 +131,7 @@ end
 
 service "crond"
 
-file '/etc/cron.d/audiencias' do 
+file '/etc/cron.d/audiencias' do
   action :delete
 end
 

@@ -1,5 +1,5 @@
-dependencies = ['git', 'python-pip', 'gcc-c++', 'python-devel',
-                'libjpeg-devel', 'zlib-devel', 'nginx']
+dependencies = ['git', 'python-pip', 'python34', 'python34-devel', 'gcc-c++',
+                'nginx']
 
 dependencies.each do |package_name|
   package "#{package_name}"
@@ -21,16 +21,31 @@ git "#{node['config']['wikilegis']['dir']}" do
   action :sync
 end
 
-directory "#{node['config']['wikilegis']['dir']}/public" do
+directory "#{node['config']['wikilegis']['dir']}/wikilegis/public" do
   owner "#{node['config']['system']['user']}"
   group "wikilegis"
   mode '0755'
   action :create
 end
 
-execute "virtualenv #{node['config']['wikilegis']['virtualenv']}" do
+directory "#{node['config']['wikilegis']['dir']}/wikilegis/static/bower_components" do
+  owner "#{node['config']['system']['user']}"
+  group "wikilegis"
+  mode '0755'
+  action :create
+end
+
+execute "update:virtualenv" do
+  command "pip install -U virtualenv"
+end
+
+execute "virtualenv #{node['config']['wikilegis']['virtualenv']} -p python3" do
   not_if do FileTest.directory?(node['config']['wikilegis']['virtualenv']) end
   action :run
+end
+
+execute "update:pip" do
+  command "#{node['config']['wikilegis']['virtualenv']}/bin/pip install -U pip"
 end
 
 execute "wikilegis:deps" do
@@ -38,7 +53,7 @@ execute "wikilegis:deps" do
 end
 
 execute "wikilegis:extra_deps" do
-  command "#{node['config']['wikilegis']['virtualenv']}/bin/pip install gunicorn"
+  command "#{node['config']['wikilegis']['virtualenv']}/bin/pip install gunicorn psycopg2"
 end
 
 file "#{node['config']['wikilegis']['dir']}/secret.key" do
@@ -57,30 +72,53 @@ file "#{node['config']['wikilegis']['dir']}/api.key" do
   mode '0755'
 end
 
-template "#{node['config']['wikilegis']['dir']}/wikilegis/settings.ini" do
+file "#{node['config']['wikilegis']['dir']}/wikilegis/wikilegis.log" do
+  action :create_if_missing
+  owner "#{node['config']['system']['user']}"
+  group "wikilegis"
+  mode '0755'
+end
+
+file "#{node['config']['wikilegis']['dir']}/wikilegis/.plugins" do
+  action :create_if_missing
+  owner "#{node['config']['system']['user']}"
+  group "wikilegis"
+  mode '0755'
+end
+
+execute "npm:install" do
+  cwd "#{node['config']['wikilegis']['dir']}"
+  command "npm install"
+end
+
+
+template "#{node['config']['wikilegis']['dir']}/wikilegis/wikilegis/settings/settings.ini" do
   owner "#{node['config']['system']['user']}"
   group "wikilegis"
   mode '0755'
 end
 
 execute 'migrate' do
-  command "#{node['config']['wikilegis']['virtualenv']}/bin/python #{node['config']['wikilegis']['dir']}/manage.py migrate"
+  cwd "#{node['config']['wikilegis']['dir']}/wikilegis/"
+  command "#{node['config']['wikilegis']['virtualenv']}/bin/python manage.py migrate"
   action :run
 end
 
 execute 'compilemessages' do
-  command "#{node['config']['wikilegis']['virtualenv']}/bin/python #{node['config']['wikilegis']['dir']}/manage.py compilemessages"
+  cwd "#{node['config']['wikilegis']['dir']}/wikilegis/"
+  command "#{node['config']['wikilegis']['virtualenv']}/bin/python manage.py compilemessages"
   action :run
 end
 
 execute 'collectstatic' do
-  command "#{node['config']['wikilegis']['virtualenv']}/bin/python #{node['config']['wikilegis']['dir']}/manage.py collectstatic --noinput"
+  cwd "#{node['config']['wikilegis']['dir']}/wikilegis/"
+  command "#{node['config']['wikilegis']['virtualenv']}/bin/python manage.py collectstatic --noinput"
   user node['config']['system']['user']
   group 'wikilegis'
   action :run
 end
 
-cookbook_file "#{node['config']['wikilegis']['dir']}/gunicorn.py" do
+cookbook_file "#{node['config']['wikilegis']['dir']}/wikilegis/gunicorn.py" do
   owner "#{node['config']['system']['user']}"
   group "wikilegis"
   mode '0644'

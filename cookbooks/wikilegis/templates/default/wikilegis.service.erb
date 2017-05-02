@@ -5,9 +5,9 @@ Description=Wikilegis
 User=<%= node['config']['system']['user'] %>
 EnvironmentFile=-/etc/sysconfig/wikilegis
 PermissionsStartOnly=true
-WorkingDirectory=<%= node['config']['wikilegis']['dir'] %>
+WorkingDirectory=<%= node['config']['wikilegis']['dir'] %>/wikilegis
 ExecStartPre=/usr/bin/install -d -m 0750 -o <%= node['config']['system']['user'] %> -g wikilegis /var/lock/wikilegis
-ExecStart=<%= node['config']['wikilegis']['virtualenv'] %>/bin/gunicorn wikilegis.wsgi:application --config=<%= node['config']['wikilegis']['dir'] %>/gunicorn.py
+ExecStart=<%= node['config']['wikilegis']['virtualenv'] %>/bin/gunicorn wikilegis.wsgi:application --config=<%= node['config']['wikilegis']['dir'] %>/wikilegis/gunicorn.py
 Restart=on-failure
 
 [Install]
